@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@simple-mono-nx/shared-state": ["libs/shared-state/src/index.ts"],
       "@simple-mono-nx/shared-ui": ["libs/shared-ui/src/index.ts"]
     }
   },

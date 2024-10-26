@@ -1,14 +1,14 @@
-For create nx monorepo workspace
+1. For create nx monorepo workspace
 ## npx create-nx-workspace@latest project-demo
 
-For crate another project in the apps directory:
+2. For crate another project in the apps directory:
 ## nx g @nx/next:app SecondPage --directory=apps/SecondPage
 
-For modular federation way microservice share
+3. For modular federation way microservice share
 ## npm install webpack
 ## npm install @module-federation/nextjs-mf
 
-In main project use this nextconfig and create .env.local file:
+4. In main project use this nextconfig and create .env.local file:
 ----------------------------------------------------------------
  webpack(config, options) {
     config.plugins.push(
@@ -25,10 +25,10 @@ In main project use this nextconfig and create .env.local file:
     return config;
   },
 
-In .env.local file set : 
+5. In .env.local file set : 
 ## NEXT_PRIVATE_LOCAL_WEBPACK=true
 
-In Other non main projects set same .env.local file and update nextconfig:
+6. In Other non main projects set same .env.local file and update nextconfig:
 -------------------------------------------------------------------
 webpack(config, options) {
     config.plugins.push(
@@ -45,7 +45,7 @@ webpack(config, options) {
   },
 
 
-For create shared-ui:
+7. For create shared-ui:
 ## nx g @nx/react:library shared-ui --directory=libs/shared-ui
 
 libs/
@@ -69,7 +69,7 @@ libs/
             └── index.ts   ------> export * from './lib/buttons' export like this for every folder 
 
 
-Every project tailwind config file update:
+8. Every project tailwind config file update:
 --------------------------------------------
 const { createGlobPatternsForDependencies } = require('@nx/react/tailwind');
 const { join } = require('path');
@@ -90,3 +90,13 @@ module.exports = {
   },
   plugins: [],
 };
+
+9. Shared state setup:
+-------------------------
+## nx g @nx/react:library shared-state --directory=libs
+## npm install @reduxjs/toolkit react-redux
+
+    a. store.ts to configure the Redux store
+    b. create slice folder, inside that folder there will be multiple slice and a index.ts  file just like shared-ui structure. In index.ts export paths will be there.
+    c. now update the src/libs index.ts file with export paths.
+    d. wrap every project with the provider and pass store to the provider.

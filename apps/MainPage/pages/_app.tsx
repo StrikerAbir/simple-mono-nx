@@ -1,7 +1,8 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import './styles.css';
-
+import { Provider } from 'react-redux';
+import { store } from '@simple-mono-nx/shared-state';
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -9,7 +10,9 @@ function CustomApp({ Component, pageProps }: AppProps) {
         <title>Welcome to main-page!</title>
       </Head>
       <main className="app">
-        <Component {...pageProps} />
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
       </main>
     </>
   );

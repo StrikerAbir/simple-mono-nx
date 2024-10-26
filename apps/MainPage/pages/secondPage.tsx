@@ -8,7 +8,7 @@ const SecondPage = dynamic(() => import('SecondPage/Index'), { ssr: false });
 const Second = () => {
   return (
     <div>
-      <h1>Main Project - Second Page</h1>
+      <h1 className='text-center'>Micro frontend - Second Page</h1>
       <SecondPage /> 
     </div>
   );
