@@ -1,7 +1,10 @@
-// apps/mainproject/next.config.js
+// apps/secondproject/next.config.js
 const { composePlugins, withNx } = require('@nx/next');
 const { NextFederationPlugin } = require('@module-federation/nextjs-mf');
 
+/**
+ * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
+ **/
 const nextConfig = {
   nx: {
     svgr: false,
@@ -9,13 +12,12 @@ const nextConfig = {
   webpack(config, options) {
     config.plugins.push(
       new NextFederationPlugin({
-        name: 'MainPage',
-        remotes: {
-          SecondPage:
-            'SecondPage@http://localhost:3001/_next/static/chunks/remoteEntry.js', // Ensure the URL matches where secondproject is running
+        name: 'SecondPage',
+        filename: 'static/chunks/remoteEntry.js',
+        exposes: {
+          './Index': './pages/index',
         },
         shared: {},
-        filename: 'static/chunks/remoteEntry.js',
       })
     );
     return config;

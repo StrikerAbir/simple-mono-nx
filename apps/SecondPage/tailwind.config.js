@@ -8,6 +8,7 @@ module.exports = {
       __dirname,
       '{src,pages,components,app}/**/*!(*.stories|*.spec).{ts,tsx,html}'
     ),
+    ...createGlobPatternsForDependencies(__dirname),
     join(__dirname, '../../libs/**/*.{ts,tsx,html}'), // Include all files in libs folder
     ...createGlobPatternsForDependencies(__dirname),
   ],

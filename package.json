@@ -2,14 +2,25 @@
   "name": "@simple-mono-nx/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "dev:main": "nx dev MainPage",
+    "dev:second": "nx dev SecondPage",
+    "dev:all": "concurrently \"nx dev MainPage\" \"nx dev SecondPage\"",
+    "build:main": "nx build MainPage",
+    "build:message": "nx build SecondPage",
+    "build:all": "concurrently \"nx build MainPage\" \"nx build SecondPage\""
+  },
   "private": true,
   "dependencies": {
+    "@module-federation/nextjs-mf": "^8.7.1",
     "next": "14.2.3",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "webpack": "^5.95.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.5",
+    "@babel/preset-react": "^7.14.5",
     "@eslint/compat": "^1.1.1",
     "@eslint/js": "^9.8.0",
     "@nx/eslint": "20.0.6",
@@ -17,10 +28,12 @@
     "@nx/jest": "20.0.6",
     "@nx/js": "20.0.6",
     "@nx/next": "20.0.6",
+    "@nx/react": "20.0.6",
     "@nx/workspace": "20.0.6",
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
+    "@testing-library/react": "15.0.6",
     "@types/jest": "^29.5.12",
     "@types/node": "18.16.9",
     "@types/react": "18.3.1",
